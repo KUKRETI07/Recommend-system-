@@ -1,5 +1,7 @@
 # 🛒 Product Recommendation System
 
+App link: https://gkyfkraur94rgj8mpka8fd.streamlit.app/ 
+
 ## 🚀 Overview
 
 This is a **Content-Based Product Recommendation System** built using Python, Pandas, Scikit-learn, and Streamlit. It analyzes product features and recommends similar products based on user selection. The system uses **TF-IDF vectorization** and **cosine similarity** to identify and suggest the most relevant alternatives.
@@ -23,11 +25,11 @@ Most recommendation systems require large datasets and are difficult to implemen
 
 ## 🎯 Solution & Features
 
-- ✅ **Content-Based Filtering**: No need for user purchase history.
-- ✅ **TF-IDF + Cosine Similarity** for understanding product descriptions.
-- ✅ **Top-N Recommendations**: Returns similar products instantly.
-- ✅ **Easy Deployment**: Built on Streamlit, deployable on platforms like Streamlit Cloud or Render.
-- ✅ **Startup-Friendly**: Lightweight, fast, and easy to adapt.
+-  **Content-Based Filtering**: No need for user purchase history.
+-  **TF-IDF + Cosine Similarity** for understanding product descriptions.
+-  **Top-N Recommendations**: Returns similar products instantly.
+-  **Easy Deployment**: Built on Streamlit, deployable on platforms like Streamlit Cloud or Render.
+-  **Startup-Friendly**: Lightweight, fast, and easy to adapt.
 
 ---
 
