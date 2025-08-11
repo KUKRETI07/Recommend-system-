@@ -3,17 +3,15 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Load dataset from CSV
+# Load your dataset
 try:
-    new_df = pd.read_csv('compressed_data.csv')
-except FileNotFoundError:
-    st.error("❌ The file 'new_df.csv' was not found. Please upload it to your repository.")
-    st.stop()
-
+    new_df = pd.read_excel('new_df.xlsx')
+except: 
+    st.error("not found")
 
 # Preprocess and vectorize
 tfidf = TfidfVectorizer(stop_words='english')
-tfidf_matrix = tfidf.fit_transform(new_df['Tags'])
+tfidf_matrix = tfidf.fit_transform(new_df['Tags'])  # or title
 cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 # Recommendation function
