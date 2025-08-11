@@ -3,8 +3,14 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Load your dataset
-new_df = pd.read_excel('new_df.xlsx')
+
+@st.cache_data  # This caches the data to avoid reloading
+def load_data():
+    return pd.read_excel('dff.xlsx', engine='openpyxl')
+
+new_df = load_data()
+
+
 
 # Preprocess and vectorize
 tfidf = TfidfVectorizer(stop_words='english')
