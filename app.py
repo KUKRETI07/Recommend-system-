@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load your dataset
 import os
-pd.read_excel(os.path.join(os.path.dirname(__file__), 'new_df.xlsx'))
+new_df = pd.read_excel(os.path.join(os.path.dirname(__file__), 'new_df.xlsx'))
 
 
 # Preprocess and vectorize
