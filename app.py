@@ -3,12 +3,21 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Load your dataset
-new_df = pd.read_excel('dff07.xlsx')
+# Google Drive direct download link
+file_id = "1NFZRDDsE33vMKlGiM74DMgArrQWnhEXJ"
+url = f"https://drive.google.com/uc?id={file_id}"
+
+# Load your dataset from Google Drive
+new_df = pd.read_excel(url)
+
+# Check if 'Tags' column exists
+if 'Tags' not in new_df.columns:
+    st.error(f"'Tags' column not found in dataset. Found columns: {list(new_df.columns)}")
+    st.stop()
 
 # Preprocess and vectorize
 tfidf = TfidfVectorizer(stop_words='english')
-tfidf_matrix = tfidf.fit_transform(new_df['Tags'])  # or title
+tfidf_matrix = tfidf.fit_transform(new_df['Tags'])
 cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 # Recommendation function
