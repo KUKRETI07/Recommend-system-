@@ -10,6 +10,10 @@ def load_data():
 
 new_df = load_data()
 
+# Convert to parquet (much smaller and faster)
+new_df.to_parquet('new_df.parquet')
+# Then load with
+new_df = pd.read_parquet('new_df.parquet')
 
 
 # Preprocess and vectorize
