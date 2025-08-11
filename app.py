@@ -5,17 +5,19 @@ from io import BytesIO
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Google Drive direct download link
+# Google Drive file download
 file_id = "1NFZRDDsE33vMKlGiM74DMgArrQWnhEXJ"
 url = f"https://drive.google.com/uc?id={file_id}"
 
-# Load your dataset from Google Drive
-new_df = pd.read_excel(url)
+@st.cache_data
+def load_data():
+    response = requests.get(url)
+    if response.status_code != 200:
+        st.error("Failed to download file from Google Drive")
+        st.stop()
+    return pd.read_excel(BytesIO(response.content))
 
-# Check if 'Tags' column exists
-if 'Tags' not in new_df.columns:
-    st.error(f"'Tags' column not found in dataset. Found columns: {list(new_df.columns)}")
-    st.stop()
+new_df = load_data()
 
 # Preprocess and vectorize
 tfidf = TfidfVectorizer(stop_words='english')
