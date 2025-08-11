@@ -5,7 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load dataset from CSV
 try:
-    new_df = pd.read_csv('new_df.csv')
+    new_df = pd.read_csv('compressed_data.csv')
 except FileNotFoundError:
     st.error("❌ The file 'new_df.csv' was not found. Please upload it to your repository.")
     st.stop()
