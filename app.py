@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 @st.cache_data  # This caches the data to avoid reloading
 def load_data():
-    return pd.read_excel('dff07.xlsx', engine='openpyxl')
+    return pd.read_excel('updata.xlsx', engine='openpyxl')
 
 new_df = load_data()
 
