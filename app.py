@@ -5,18 +5,26 @@ from io import BytesIO
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Google Drive file download
+# Google Drive direct download link
 file_id = "1NFZRDDsE33vMKlGiM74DMgArrQWnhEXJ"
-url = f"https://drive.google.com/uc?id={file_id}"
+url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
 @st.cache_data
 def load_data():
     response = requests.get(url)
     if response.status_code != 200:
-        st.error("Failed to download file from Google Drive")
+        st.error("❌ Failed to download file from Google Drive.")
         st.stop()
+    
+    # Check if the file looks like an Excel file
+    content_type = response.headers.get('Content-Type', '')
+    if "text/html" in content_type:
+        st.error("❌ Google Drive sent an HTML page instead of the file. Check file size or permissions.")
+        st.stop()
+    
     return pd.read_excel(BytesIO(response.content))
 
+# Load dataset
 new_df = load_data()
 
 # Preprocess and vectorize
